@@ -1,48 +1,58 @@
 import React from "react";
 import { iconUrlFromCode } from "../services/weatherService";
 
+
 function Forecast({ title, items }) {
-  console.log(items);
+  // console.log(items);
   return (
     <div>
       <div className="flex items-center justify-start mt-6">
         <p className="text-white font-medium uppercase">{title}</p>
       </div>
-      <hr className="my-2" />
 
+      <hr className="my-2"></hr>
       <div className="flex flex-row items-center justify-between text-white">
-        {/* this commented code is what I teach during the video
-        it has missing key and will show error in browser console
-        so use the code below
-        what I have done is just added index to loop and
-        key attribute to the div element */}
+        {items?.map((item) => {
+          if (title === "Hourly Forecast") {
+            return (
+              <div className="flex flex-col items-center justify-center">
+                <p className="font-light text-sm">{item.title.slice(11, 16)}</p>
 
-        {/* {items.map((item) => (
-          <div className="flex flex-col items-center justify-center">
-            <p className="font-light text-sm">{item.title}</p>
-            <img
-              src={iconUrlFromCode(item.icon)}
-              className="w-12 my-1"
-              alt=""
-            />
-            <p className="font-medium">{`${item.temp.toFixed()}°`}</p>
-          </div>
-        ))} */}
+                <img
+                  src={iconUrlFromCode(item.icon)}
+                  className="w-12 my-1"
+                  alt="Temp"
+                ></img>
+                <p className="font-medium">{`${Math.round(
+                  item.temp - 273
+                )}°`}</p>
+              </div>
+            );
+          } else {
+            const month_num = Number(item.title.slice(6, 7));
+            let month = new Date(0, month_num - 1)
+              .toLocaleString("en-US", { month: "long" })
+              .slice(0, 3);
 
-        {items.map((item, index) => (
-          <div
-            key={index}
-            className="flex flex-col items-center justify-center"
-          >
-            <p className="font-light text-sm">{item.title}</p>
-            <img
-              src={iconUrlFromCode(item.icon)}
-              className="w-12 my-1"
-              alt=""
-            />
-            <p className="font-medium">{`${item.temp.toFixed()}°`}</p>
-          </div>
-        ))}
+            return (
+              <div className="flex flex-col items-center justify-center">
+                <p className="font-light text-sm">{`${item.title.slice(
+                  8,
+                  11
+                )} ${month}`}</p>
+
+                <img
+                  src={iconUrlFromCode(item.icon)}
+                  className="w-12 my-1"
+                  alt="Temp"
+                ></img>
+                <p className="font-medium">{`${Math.round(
+                  item.temp - 273
+                )}°`}</p>
+              </div>
+            );
+          }
+        })}
       </div>
     </div>
   );

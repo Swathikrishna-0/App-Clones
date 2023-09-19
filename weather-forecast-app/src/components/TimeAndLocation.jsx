@@ -1,20 +1,29 @@
 import React from "react";
-import { formatToLocalTime } from "../services/weatherService";
 
-function TimeAndLocation({ weather: { dt, timezone, name, country } }) {
+function TimeandLocation({ weather: { timezone, name, country } }) {
+  var d = new Date();
+  var localTime = d.getTime();
+  var localOffset = d.getTimezoneOffset() * 60000;
+  var utc = localTime + localOffset;
+  var cityOffset = utc + 1000 * timezone;
+  const cityDate = new Date(cityOffset).toDateString().split(" ");
+  const cityTime = new Date(cityOffset).toTimeString().split(" ");
+  const [hrs, mins] = cityTime[0].split(":");
+  // console.log(localOffset,nd,cityTime,cityDate,hrs,mins,timezone);
+
   return (
     <div>
       <div className="flex items-center justify-center my-6">
         <p className="text-white text-xl font-extralight">
-          {formatToLocalTime(dt, timezone)}
+          {`${cityDate[0]} ,     ${cityDate[1]} ${cityDate[2]} ${cityDate[3]}`}{" "} &nbsp;
+          | &nbsp; Local Time : {`${hrs}:${mins}`}
         </p>
       </div>
-
       <div className="flex items-center justify-center my-3">
-        <p className="text-white text-3xl font-medium">{`${name}, ${country}`}</p>
+        <p className="text-white text-3xl font-medium">{` ${name}, ${country} `}</p>
       </div>
     </div>
   );
 }
 
-export default TimeAndLocation;
+export default TimeandLocation;
