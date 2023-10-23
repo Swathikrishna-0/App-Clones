@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 // import { Tooltip as ReactTooltip } from 'react-tooltip'
-import { AppWrap } from '../../wrapper';
-// import { AppWrap, MotionWrap } from '../../wrapper';
-import { urlFor, client } from '../../client';
-import './Skills.scss';
+// import { AppWrap } from '../../wrapper';
+import { AppWrap, MotionWrap } from "../../wrapper";
+import { urlFor, client } from "../../client";
+import "./Skills.scss";
 
 const Skills = () => {
   // const [experiences, setExperiences] = useState([]);
   const [skills, setSkills] = useState([]);
-
+  // const b = JSON.parse(JSON.stringify(skills));
   useEffect(() => {
     // const query = '*[_type == "experiences"]';
     const skillsQuery = '*[_type == "skills"]';
@@ -22,10 +22,16 @@ const Skills = () => {
       setSkills(data);
     });
   }, []);
+  
+
+  // const skillObj = JSON.stringify(skills);
+  // console.log(b,'stringifyyyy')
+
+ 
 
   return (
     <>
-      <h2 className="head-text">Skills</h2>
+      <h2 className="head-text" style={{color:"White"}}>Skillset</h2>
 
       <div className="app__skills-container">
         <motion.div className="app__skills-list">
@@ -34,7 +40,7 @@ const Skills = () => {
               whileInView={{ opacity: [0, 1] }}
               transition={{ duration: 0.5 }}
               className="app__skills-item app__flex"
-              key={skill.name}
+              key={skill.name} style={{color:"white"}}
             >
               <div
                 className="app__flex"
@@ -91,9 +97,9 @@ const Skills = () => {
   );
 };
 
-// export default AppWrap(
-//   MotionWrap(Skills, 'app__skills'),
-//   'skills',
-//   'app__whitebg',
-// );
-export default AppWrap(Skills, 'app__skills');
+export default AppWrap(
+  MotionWrap(Skills, "app__skills"),
+  "skills",
+  "app__bg "
+);
+// export default AppWrap(Skills, 'app__skills');

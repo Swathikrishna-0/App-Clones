@@ -3,13 +3,19 @@
 :root {
   --font-base: "DM Sans", sans-serif;
 
-  --primary-color: #edf2f8;
-  --secondary-color: #313bac;
-  --black-color: #030303;
-  --lightGray-color: #e4e4e4;
-  --gray-color: #6b7688;
-  --brown-color: #46364a;
-  --white-color: #ffffff;
+  --black: black;
+  --white: #ffffff;
+  --background: #101733;
+  --light-blue: #4f9ed7;
+  --dark-blue:#483CC2;
+
+  /* --light-pink-color: #e8b7d4;
+  --dark-pink-color: #a5678e;
+  --light-blue-color: #7facd6;
+  --dark-blue-color: #33539e;
+  --light-purple-color: #bfb8da;
+  --cream-color: #fcfaf2;
+  --dark-cream-color: #ffbfc5; */
 }
 
 * {

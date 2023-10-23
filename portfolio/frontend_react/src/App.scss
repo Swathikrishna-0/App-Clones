@@ -1,14 +1,14 @@
 .app {
-    background-color: var(--primary-color);
+    background-color: var(--white);
     font-family: var(--font-base);
   }
   
   .app__whitebg {
-    background-color: var(--white-color);
+    background-color: var(--white);
   }
   
-  .app__primarybg {
-    background-color: var(--primary-color);
+  .app__bg {
+    background-color: var(--background);
   }
   
   .app__container {
@@ -47,7 +47,7 @@
   
     p {
       text-transform: uppercase;
-      color: var(--black-color);
+      color: var(--black);
     }
   }
   
@@ -55,12 +55,9 @@
     font-size: 2.75rem;
     font-weight: 800;
     text-align: center;
-    color: var(--black-color);
     text-transform: capitalize;
   
-    span {
-      color: var(--secondary-color);
-    }
+   
   
     @media screen and (min-width: 2000px) {
       font-size: 4rem;
@@ -74,7 +71,6 @@
   .p-text {
     font-size: 0.8rem;
     text-align: left;
-    color: var(--gray-color);
     line-height: 1.5;
   
     @media screen and (min-width: 2000px) {
@@ -85,7 +81,6 @@
   .bold-text {
     font-size: 1rem;
     font-weight: 800;
-    color: var(--black-color);
     text-align: left;
   
     @media screen and (min-width: 2000px) {
@@ -105,13 +100,13 @@
   
     padding: 1rem;
   
-    div {
+    a {
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      background-color: var(--white-color);
+      background: linear-gradient(to left,var(--light-blue),var(--dark-blue));
       margin: 0.25rem 0;
-      border: 1px solid var(--lightGray-color);
+      border: 1px solid var(--dark-blue);
   
       display: flex;
       justify-content: center;
@@ -120,17 +115,17 @@
       transition: all 0.3s ease-in-out;
   
       svg {
-        width: 15px;
-        height: 15px;
-        color: var(--gray-color);
+        width: 20px;
+        height: 20px;
+        color: var(--white);
       }
   
       &:hover {
-        background-color: var(--secondary-color);
-        border-color: var(--secondary-color);
+        background: linear-gradient(to right,var(--light-blue),var(--dark-blue));
+        border-color: var(--light-blue);
   
         svg {
-          color: var(--white-color);
+          color: var(--white);
         }
       }
   
@@ -166,7 +161,7 @@
       transition: background-color 0.2s ease-in-out;
   
       &:hover {
-        background-color: var(--secondary-color);
+        background-color: var(--light-blue);
       }
   
       @media screen and (min-width: 2000px) {
@@ -186,3 +181,4 @@
       padding: 2rem;
     }
   }
+ 

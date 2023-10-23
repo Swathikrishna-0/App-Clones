@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { AiFillEye, AiFillGithub } from "react-icons/ai";
 import { motion } from "framer-motion";
-import { AppWrap } from "../../wrapper";
-// import { AppWrap, MotionWrap } from '../../wrapper';
+import { AppWrap, MotionWrap } from '../../wrapper';
 import { urlFor, client } from "../../client";
 import "./Work.scss";
 
@@ -38,7 +37,7 @@ const Work = () => {
 
   return (
     <>
-      <h2 className="head-text">
+      <h2 className="head-text work__head">
         My Creative <span>Portfolio</span> Section
       </h2>
 
@@ -102,7 +101,7 @@ const Work = () => {
 
             <div className="app__work-content app__flex">
               <h4 className="bold-text">{work.title}</h4>
-              <p className="p-text" style={{ marginTop: 10 }}>
+              <p className="p-text" style={{ marginTop: 10, textAlign:"center"}}>
                 {work.description}
               </p>
 
@@ -117,9 +116,9 @@ const Work = () => {
   );
 };
 
-// export default AppWrap(
-//   MotionWrap(Work, 'app__works'),
-//   'work',
-//   'app__primarybg',
-// );
-export default AppWrap(Work, "work");
+export default AppWrap(
+  MotionWrap(Work, 'app__works'),
+  'work',
+  'app__bg',
+);
+// export default AppWrap(Work, "work");
